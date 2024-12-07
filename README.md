@@ -52,3 +52,6 @@ My backend provide 3 apis:
 3. POST /fetch 
     request body: plateNumber
     sample response: { "plateNumber": "AB-5678" }
+
+prompt 6:
+now, I want to have a checking on the plate number, the format should be two letters + four digits (e.g., “AB-1234”). also, parking a car that already exist in parking lots is not allowed. also, fetching a car that not exist in parking lots is not allowed too. use alert to remind user about these.

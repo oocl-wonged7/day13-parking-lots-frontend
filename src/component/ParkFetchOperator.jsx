@@ -5,9 +5,25 @@ import { parkCar, fetchCar } from '../api/parkingServices';
 const ParkFetchOperation = () => {
   const [plateNumber, setPlateNumber] = useState('');
   const [parkingBoy, setParkingBoy] = useState('STANDARD');
-  const { dispatch } = useParking();
+  const { state, dispatch } = useParking();
+
+  const validatePlateNumber = (plateNumber) => {
+    const regex = /^[A-Z]{2}-\d{4}$/;
+    return regex.test(plateNumber);
+  };
 
   const handleParkCar = async () => {
+    if (!validatePlateNumber(plateNumber)) {
+      alert('Invalid plate number format. It should be two letters + four digits (e.g., “AB-1234”).');
+      return;
+    }
+
+    const carExists = state.some(lot => lot.tickets.some(ticket => ticket.plateNumber === plateNumber));
+    if (carExists) {
+      alert('Car with this plate number is already parked.');
+      return;
+    }
+
     try {
       const response = await parkCar(plateNumber, parkingBoy);
       dispatch({ type: PARK_CAR, payload: response });
@@ -18,6 +34,17 @@ const ParkFetchOperation = () => {
   };
 
   const handleFetchCar = async () => {
+    if (!validatePlateNumber(plateNumber)) {
+      alert('Invalid plate number format. It should be two letters + four digits (e.g., “AB-1234”).');
+      return;
+    }
+
+    const carExists = state.some(lot => lot.tickets.some(ticket => ticket.plateNumber === plateNumber));
+    if (!carExists) {
+      alert('Car with this plate number is not found.');
+      return;
+    }
+
     try {
       const response = await fetchCar(plateNumber);
       dispatch({ type: FETCH_CAR, payload: response });
