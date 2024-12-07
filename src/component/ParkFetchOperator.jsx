@@ -27,7 +27,7 @@ const ParkFetchOperation = () => {
   };
 
   return (
-    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
       <div style={{ display: 'flex', alignItems: 'center' }}>
         <label style={{ marginRight: '10px' }}>Plate Number:</label>
         <input
