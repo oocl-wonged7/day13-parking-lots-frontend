@@ -1,16 +1,28 @@
 import React, { useState } from 'react';
+import { useParking, PARK_CAR, FETCH_CAR } from '../Reducer/ParkingProvider';
 
 const ParkFetchOperation = () => {
   const [plateNumber, setPlateNumber] = useState('');
   const [parkingBoy, setParkingBoy] = useState('STANDARD');
+  const { dispatch } = useParking();
 
   const handleParkCar = () => {
-    // Logic for parking the car
+    // Mocked response for parking a car
+    const response = {
+      plateNumber,
+      position: 2,
+      parkingLot: 1
+    };
+    dispatch({ type: PARK_CAR, payload: response });
     console.log(`Parking car with plate number: ${plateNumber} using ${parkingBoy} strategy`);
   };
 
   const handleFetchCar = () => {
-    // Logic for fetching the car
+    // Mocked response for fetching a car
+    const response = {
+      plateNumber
+    };
+    dispatch({ type: FETCH_CAR, payload: response });
     console.log(`Fetching car with plate number: ${plateNumber} using ${parkingBoy} strategy`);
   };
 

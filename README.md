@@ -19,3 +19,12 @@ ParkFetchOperation:
 3. two buttons, one for park car and one for fetch car
 4. Please give a label for the plate number
 5. The above 3 elements should be on the same row, and center the whole component.
+
+propmt 2:
+I would like to use useContext and useReducer to manage the parking lots' information. 
+This is the mocked data list: [ { "id": 1, "name": "The Plaza Park", "tickets": [ { "plateNumber": "AB-4321", "position": 1, "parkingLot": 1 } ], "capacity": 9, "availableCapacity": 8, "availablePositionRate": 0.8888888888888888, "full": false }, { "id": 2, "name": "City Mall Garage", "tickets": [ { "plateNumber": "AB-1234", "position": 1, "parkingLot": 2 } ], "capacity": 12, "availableCapacity": 11, "availablePositionRate": 0.9166666666666666, "full": false }, { "id": 3, "name": "Office Tower Parking", "tickets": [ { "plateNumber": "AB-4444", "position": 1, "parkingLot": 3 } ], "capacity": 9, "availableCapacity": 8, "availablePositionRate": 0.8888888888888888, "full": false } ] 
+
+I want to have 3 actions: 
+get allParkingLots: get a list in the above format and save it. 
+park: park a car into the parking Lot and modify the above list base on the response. the expected response: { "plateNumber": "AB-5678", "position": 2, "parkingLot": 1 } 
+fetch: fetch a card from the parking lot and modify the above list base on the response. the expected response: { "plateNumber": "AB-5678" }
