@@ -1,35 +1,7 @@
 import React, { createContext, useReducer, useContext } from 'react';
 
 // Initial state
-const initialState = [
-  {
-    id: 1,
-    name: "The Plaza Park",
-    tickets: [{ plateNumber: "AB-4321", position: 1, parkingLot: 1 }],
-    capacity: 9,
-    availableCapacity: 8,
-    availablePositionRate: 0.8888888888888888,
-    full: false
-  },
-  {
-    id: 2,
-    name: "City Mall Garage",
-    tickets: [{ plateNumber: "AB-1234", position: 1, parkingLot: 2 }],
-    capacity: 12,
-    availableCapacity: 11,
-    availablePositionRate: 0.9166666666666666,
-    full: false
-  },
-  {
-    id: 3,
-    name: "Office Tower Parking",
-    tickets: [{ plateNumber: "AB-4444", position: 1, parkingLot: 3 }],
-    capacity: 9,
-    availableCapacity: 8,
-    availablePositionRate: 0.8888888888888888,
-    full: false
-  }
-];
+const initialState = [];
 
 // Actions
 const GET_ALL_PARKING_LOTS = 'GET_ALL_PARKING_LOTS';

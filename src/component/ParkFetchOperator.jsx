@@ -1,29 +1,30 @@
 import React, { useState } from 'react';
 import { useParking, PARK_CAR, FETCH_CAR } from '../Reducer/ParkingProvider';
+import { parkCar, fetchCar } from '../api/parkingServices';
 
 const ParkFetchOperation = () => {
   const [plateNumber, setPlateNumber] = useState('');
   const [parkingBoy, setParkingBoy] = useState('STANDARD');
   const { dispatch } = useParking();
 
-  const handleParkCar = () => {
-    // Mocked response for parking a car
-    const response = {
-      plateNumber,
-      position: 2,
-      parkingLot: 1
-    };
-    dispatch({ type: PARK_CAR, payload: response });
-    console.log(`Parking car with plate number: ${plateNumber} using ${parkingBoy} strategy`);
+  const handleParkCar = async () => {
+    try {
+      const response = await parkCar(plateNumber, parkingBoy);
+      dispatch({ type: PARK_CAR, payload: response });
+      console.log(`Parking car with plate number: ${plateNumber} using ${parkingBoy} strategy`);
+    } catch (error) {
+      console.error('Error parking car:', error);
+    }
   };
 
-  const handleFetchCar = () => {
-    // Mocked response for fetching a car
-    const response = {
-      plateNumber
-    };
-    dispatch({ type: FETCH_CAR, payload: response });
-    console.log(`Fetching car with plate number: ${plateNumber} using ${parkingBoy} strategy`);
+  const handleFetchCar = async () => {
+    try {
+      const response = await fetchCar(plateNumber);
+      dispatch({ type: FETCH_CAR, payload: response });
+      console.log(`Fetching car with plate number: ${plateNumber} using ${parkingBoy} strategy`);
+    } catch (error) {
+      console.error('Error fetching car:', error);
+    }
   };
 
   return (

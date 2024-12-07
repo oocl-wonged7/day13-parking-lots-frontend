@@ -38,3 +38,17 @@ for each grid, if there is a car parked on it, display the plate number. otherwi
 below the grid, display the name of the parking lot. 
 
 Also, in the ParkingLots component, parking lots should be displayed in a row
+
+prompt 5:
+Create a axios interceptor to handle the API call and global error handling.
+The host is http://localhost:8080/
+My backend provide 3 apis:
+1. GET /allParkingLots 
+    sample response:
+    [ { "id": 1, "name": "The Plaza Park", "tickets": [ { "plateNumber": "AB-4321", "position": 1, "parkingLot": 1 } ], "capacity": 9, "availableCapacity": 8, "availablePositionRate": 0.8888888888888888, "full": false }, { "id": 2, "name": "City Mall Garage", "tickets": [ { "plateNumber": "AB-1234", "position": 1, "parkingLot": 2 } ], "capacity": 12, "availableCapacity": 11, "availablePositionRate": 0.9166666666666666, "full": false }, { "id": 3, "name": "Office Tower Parking", "tickets": [ { "plateNumber": "AB-4444", "position": 1, "parkingLot": 3 } ], "capacity": 9, "availableCapacity": 8, "availablePositionRate": 0.8888888888888888, "full": false } ]
+2. POST /park 
+    request body: plateNumber, strategy
+    sample response: { "plateNumber": "AB-5678", "position": 2, "parkingLot": 1 } 
+3. POST /fetch 
+    request body: plateNumber
+    sample response: { "plateNumber": "AB-5678" }
